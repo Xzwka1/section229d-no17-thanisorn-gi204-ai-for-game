@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; // เพิ่มบรรทัดนี้เข้ามา เพื่อให้รู้จัก TextMeshPro
+using TMPro;
+using UnityEngine.SceneManagement; // --- เพิ่มบรรทัดนี้เข้ามา เพื่อให้โหลดฉากใหม่ได้ ---
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,11 +17,14 @@ public class PlayerController : MonoBehaviour
     public int score = 0;
 
     [Header("ระบบ UI และเวลา")]
-    public TextMeshProUGUI scoreText;       // เปลี่ยนเป็น TextMeshPro
-    public TextMeshProUGUI timeText;        // เปลี่ยนเป็น TextMeshPro
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI timeText;
     public float timeLimit = 60f;
     public GameObject gameOverPanel;
-    public TextMeshProUGUI finalScoreText;  // เปลี่ยนเป็น TextMeshPro
+    public TextMeshProUGUI finalScoreText;
+
+    [Header("ระบบเสียงเพลง BGM")]
+    public AudioSource bgmSource;
 
     private bool isGameOver = false;
 
@@ -36,6 +40,20 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        // --- ส่วนที่เพิ่มเข้ามาใหม่: กด R เพื่อเริ่มใหม่ และ ESC เพื่อออกเกม ---
+        // สามารถกดได้ตลอดเวลาแม้เกมจะจบไปแล้ว
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            RestartGame();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ExitGame();
+        }
+        // --------------------------------------------------------
+
+        // ถ้าเกมจบแล้ว ให้หยุดทำงานคำสั่งเดินและยิงข้างล่างทั้งหมด
         if (isGameOver) return;
 
         // ระบบเวลา
@@ -121,13 +139,34 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
+        if (bgmSource != null)
+        {
+            bgmSource.Stop();
+        }
+
         if (gameOverPanel != null)
         {
             gameOverPanel.SetActive(true);
             if (finalScoreText != null)
             {
-                finalScoreText.text = "Your Score: " + score.ToString() + " Hits!";
+                // เพิ่มคำแนะนำให้ผู้เล่นรู้ว่ากดปุ่มไหนได้บ้างตอนจบเกม
+                finalScoreText.text = "Your Score: " + score.ToString() + " Hits!\n\nPress 'R' to Restart\nPress 'ESC' to Exit";
             }
         }
+    }
+
+    // --- ฟังก์ชันใหม่สำหรับจัดการเริ่มเกมและออกเกม ---
+    void RestartGame()
+    {
+        // โหลดฉากปัจจุบันขึ้นมาใหม่ทั้งหมด (รีเซ็ตทุกอย่าง)
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    void ExitGame()
+    {
+        Debug.Log("ออกจากเกมแล้ว!"); // จะแสดงใน Console ให้เราเห็นว่าปุ่มทำงาน
+
+        // คำสั่งปิดโปรแกรม (จะเห็นผลจริงๆ ตอนที่คุณ Build เกมออกมาเป็นไฟล์ .exe แล้วเท่านั้นครับ)
+        Application.Quit();
     }
 }

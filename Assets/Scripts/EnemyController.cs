@@ -30,19 +30,18 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        // ถ้าเจอตัวผู้เล่น ให้กล้วยทำหน้าที่เดินเข้าหา
+        
         if (playerTransform != null)
         {
             Vector3 targetPosition = new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z);
 
-            // 1. สั่งให้กล้วยหันหน้าไปหาผู้เล่น (มันจะก้มหน้าลง)
+            
             transform.LookAt(targetPosition);
 
-            // 2. ดัดหลังกล้วยให้ยืนตรง! (บังคับหมุนแกน X ขึ้นมา)
-            // *** หมายเหตุ: ถ้าใส่ -90f แล้วกล้วยหงายหลัง ให้เปลี่ยนเป็น 90f หรือ 270f แทนนะครับ ***
+            
             transform.eulerAngles = new Vector3(-90f, transform.eulerAngles.y, 0f);
 
-            // 3. สั่งให้กล้วยเดินหน้าเข้าหาเป้าหมาย
+            
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
         }
 
@@ -54,7 +53,7 @@ public class EnemyController : MonoBehaviour
             
             transform.LookAt(targetPosition);
 
-            
+             
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
         }
     }
