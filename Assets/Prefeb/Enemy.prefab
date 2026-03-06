@@ -54,10 +54,83 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 6f8c1cee36ebada448193313c93e4cbc, type: 2}
     - target: {fileID: 919132149155446097, guid: fde155ef18e67d6498215e6b79793a8c, type: 3}
       propertyPath: m_Name
-      value: Meshy_AI_A_3D_stylized_cartoon_0306084822_texture
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fde155ef18e67d6498215e6b79793a8c, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fde155ef18e67d6498215e6b79793a8c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1525600245141080310}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fde155ef18e67d6498215e6b79793a8c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4316776679925502114}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fde155ef18e67d6498215e6b79793a8c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7011335859236261321}
   m_SourcePrefab: {fileID: 100100000, guid: fde155ef18e67d6498215e6b79793a8c, type: 3}
+--- !u!1 &3501785884281151803 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fde155ef18e67d6498215e6b79793a8c, type: 3}
+  m_PrefabInstance: {fileID: 4348716254123727978}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1525600245141080310
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3501785884281151803}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.014931129, y: 0.0072877416, z: 0.020001454}
+  m_Center: {x: 0.000010614982, y: 0.000017620045, z: -0.000017445072}
+--- !u!64 &4316776679925502114
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3501785884281151803}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5461320835613783329, guid: fde155ef18e67d6498215e6b79793a8c, type: 3}
+--- !u!114 &7011335859236261321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3501785884281151803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ac4018d9ec8c2443959cfcd2a340fcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyController
